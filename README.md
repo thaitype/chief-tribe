@@ -12,7 +12,7 @@ The Chief Tribe is an ecosystem of three open-source projects that together addr
 │  │  chief                                        │  │
 │  │     Portable framework + workflow structure   │  │
 │  │  ┌─────────────────────────────────────────┐  │  │
-│  │  │  elder                                  │  │  │  👴 
+│  │  │  sage                                   │  │  │  🧙 
 │  │  │     Baseline behavior principles        │  │  │
 │  │  └─────────────────────────────────────────┘  │  │
 │  └───────────────────────────────────────────────┘  │
@@ -23,7 +23,7 @@ The Chief Tribe is an ecosystem of three open-source projects that together addr
 
 | Project | Role | Opinion Level | Status |
 |---------|------|---------------|--------|
-| **[elder](https://github.com/thaitype/elder)** 👴 | Baseline behavior principles for any agent | None | Planned |
+| **[sage](https://github.com/thaitype/sage)** 🧙 | Baseline behavior principles for any agent | None | Planned |
 | **[chief](https://github.com/thaitype/chief)** ⚔️ | Portable multi-agent workflow framework | Low | Active (formerly `chief-agent-framework`) |
 | **[chieftain](https://github.com/thaitype/chieftain)** 👑 | Opinionated runtime + distribution | High | Planned |
 
@@ -33,7 +33,7 @@ Different people need different things. A developer trying out an agent for the 
 
 The tribe separates concerns:
 
-- **elder** gives you baseline behavior principles for any agent — think before acting, keep things simple, make surgical changes, work toward verifiable goals
+- **sage** gives you baseline behavior principles for any agent — think before acting, keep things simple, make surgical changes, work toward verifiable goals
 - **chief** gives you a structured workflow (plan → build → verify) without opinion about your tech stack
 - **chieftain** gives you the full package — runtime, presets, integrations — opinionated for a specific way of working
 
@@ -41,7 +41,7 @@ Each layer builds on the one below. You can stop at any layer depending on how m
 
 ## Which One Should I Use?
 
-### Use `elder` if...
+### Use `sage` if...
 
 - You want sensible baseline behavior from your agent, regardless of which one you use
 - You're evaluating different agents and want consistent behavior across them
@@ -66,7 +66,7 @@ Each layer builds on the one below. You can stop at any layer depending on how m
 
 | You are... | Start with |
 |------------|-----------|
-| A developer who wants better agent behavior today | `elder` |
+| A developer who wants better agent behavior today | `sage` |
 | A developer who wants structure but hates lock-in | `chief` |
 | A developer who wants the full experience out of the box | `chieftain` |
 | Experimenting and want to learn the philosophy | Read this repo first, then pick |
@@ -127,24 +127,24 @@ When something is agent-specific (e.g., Claude Code's `.claude/` directory), it'
 ### Dependency Chain
 
 ```
-chieftain  ──uses──▶  chief  ──uses──▶  elder
+chieftain  ──uses──▶  chief  ──uses──▶  sage
 ```
 
-- **elder** has no dependencies — it's a standalone baseline useful on its own
-- **chief** uses `elder` as its behavioral foundation, adds framework structure
+- **sage** has no dependencies — it's a standalone baseline useful on its own
+- **chief** uses `sage` as its behavioral foundation, adds framework structure
 - **chieftain** uses `chief` as its framework, adds runtime + opinion
 
 You can use any layer standalone. Each one works without the layers above it.
 
 ### What Each Layer Contains
 
-**elder**
+**sage**
 - Four behavior principles: Think Before Acting, Simplicity First, Surgical Changes, Goal-Driven Execution
 - Agent-agnostic — works with any tool that reads an instructions file
 - No directory structure, no workflow, no tooling — just behavior
 
 **chief**
-- Everything in `elder`
+- Everything in `sage`
 - 3-agent architecture (chief, builder, tester) + optional review-plan agent
 - Rules hierarchy (AGENTS.md > .chief/\_rules > milestone goals)
 - File-based state management (`.chief/` directory with milestones, goals, contracts, plans, reports)
@@ -165,15 +165,15 @@ You can use any layer standalone. Each one works without the layers above it.
 
 Each layer has its own installation guide. Pick your entry point:
 
-- 👴 **[Install elder](https://github.com/thaitype/elder#setup)** — drop baseline principles into any agent
+- 🧙 **[Install sage](https://github.com/thaitype/sage#setup)** — drop baseline principles into any agent
 - ⚔️ **[Install chief](https://github.com/thaitype/chief#setup)** — set up the framework
 - 👑 **[Install chieftain](https://github.com/thaitype/chieftain#setup)** — get the full distribution
 
 ## Roadmap
 
 - [x] v2 of `chief-agent-framework` released (now renamed to `chief`)
-- [ ] Extract baseline behavior principles into `elder`
-- [ ] Refactor `chief` to use `elder` as its baseline
+- [ ] Extract baseline behavior principles into `sage`
+- [ ] Refactor `chief` to use `sage` as its baseline
 - [ ] Ship `chieftain` v0.1 with CLI + tmux runtime
 - [ ] Cross-tribe benchmark suite (test harness+model combos)
 - [ ] Blog series on harness engineering
@@ -193,8 +193,8 @@ For code contributions, head to the relevant layer's repo.
 
 The tribe's design draws on many sources:
 
-- [Andrej Karpathy's observations on LLM coding pitfalls](https://x.com/karpathy/status/2015883857489522876) — the root inspiration for the behavior principles in `elder`
-- Forrest Chang's [andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills) — packaged those observations into a Claude Code `CLAUDE.md`, which `elder` adapts into an agent-agnostic baseline
+- [Andrej Karpathy's observations on LLM coding pitfalls](https://x.com/karpathy/status/2015883857489522876) — the root inspiration for the behavior principles in `sage`
+- Forrest Chang's [andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills) — packaged those observations into a Claude Code `CLAUDE.md`, which `sage` adapts into an agent-agnostic baseline
 - Mario Zechner's [pi](https://pi.dev/) and his [blog post on minimal coding agents](https://mariozechner.at/posts/2025-11-30-pi-coding-agent/) — the clearest articulation of harness engineering principles
 - The `AGENTS.md` convention pioneered across OpenCode, Amp, and others
 - oh-my-\* ecosystem (oh-my-zsh, oh-my-codex, oh-my-openagent) — inspiration for the distribution layer pattern
